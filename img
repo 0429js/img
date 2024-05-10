@@ -63,7 +63,7 @@ cv2.imshow("Skew Image", skewImage)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
-# Display the Skewed image
+# Display the Affine image
 src_points = np.float32([[50, 50], [200, 50], [50, 200]])
 dst_points = np.float32([[10, 100], [200, 50], [100, 250]])
 affineMatrix = cv2.getAffineTransform(src_points, dst_points)
