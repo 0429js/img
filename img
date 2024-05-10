@@ -170,3 +170,26 @@ if lines is not None:
 cv2.imshow('Line',image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+
+#Face detection
+
+import cv2
+
+face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+
+image = cv2.imread('media/people.jpg')
+
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=18, minSize=(30, 30))
+names = ['Person A','Person B','Person C','Person D']
+i=0
+for (x, y, w, h) in faces:
+    cv2.rectangle(image, (x, y), (x+w, y+h), (255, 255, 255), 3)
+    cv2.putText(image,names[i],(x,y),cv2.FONT_HERSHEY_SIMPLEX,1.3,(255,255,255),4)
+    i = i+1
+
+cv2.imshow('Face Detection',image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
